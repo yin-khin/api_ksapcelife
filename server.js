@@ -27,7 +27,7 @@ app.get("/", (req, res) =>
   res.json({ message: "🚀 CamBo Space Backend Running" }),
 );
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // ✅ Better: Use different sync options based on environment
 const isDevelopment = process.env.NODE_ENV === "development";
