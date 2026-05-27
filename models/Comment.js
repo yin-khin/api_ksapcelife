@@ -10,13 +10,16 @@ const Comment = sequelize.define(
     user_name: { type: DataTypes.STRING(100), allowNull: false },
     user_email: { type: DataTypes.STRING(100), allowNull: true },
     content: { type: DataTypes.TEXT, allowNull: false },
-    status: { type: DataTypes.ENUM("approved", "pending", "spam"), defaultValue: "pending" },
+    status: {
+      type: DataTypes.ENUM("approved", "pending", "spam"),
+      defaultValue: "pending",
+    },
     parent_id: { type: DataTypes.INTEGER, defaultValue: 0 },
   },
   {
     tableName: "comments",
     timestamps: true,
-  }
+  },
 );
 
 module.exports = Comment;
