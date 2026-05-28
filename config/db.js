@@ -20,6 +20,29 @@
 
 // module.exports = sequelize;
 
+// const { Sequelize } = require("sequelize");
+// require("dotenv").config();
+
+// const sequelize = new Sequelize(process.env.MYSQL_PUBLIC_URL, {
+//   dialect: "mysql",
+//   logging: false,
+
+//   dialectOptions: {
+//     ssl: false,
+//   },
+// });
+
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("✅ Railway MySQL Connected");
+//   })
+//   .catch((err) => {
+//     console.log("❌ Database Error:", err);
+//   });
+
+// module.exports = sequelize;
+
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
@@ -28,14 +51,17 @@ const sequelize = new Sequelize(process.env.MYSQL_PUBLIC_URL, {
   logging: false,
 
   dialectOptions: {
-    ssl: false,
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 
 sequelize
   .authenticate()
   .then(() => {
-    console.log("✅ Railway MySQL Connected");
+    console.log("✅ Aiven MySQL Connected");
   })
   .catch((err) => {
     console.log("❌ Database Error:", err);
